@@ -1,0 +1,9 @@
+#leftPane {
+  -fx-background-color: rgb(34, 33, 128);
+}
+
+#button1,
+#button2 {
+  -fx-padding: 6px 0px;
+  -fx-background-color: rgb(32, 9, 116);
+}
