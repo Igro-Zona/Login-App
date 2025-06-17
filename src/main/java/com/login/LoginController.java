@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -15,7 +16,7 @@ public class LoginController {
     private Label message;
 
     @FXML
-    private AnchorPane passwordInput;
+    private PasswordField passwordInput;
 
     @FXML
     private TextField usernameInput;
@@ -36,9 +37,11 @@ public class LoginController {
     }
 
     public void button1OnAction(ActionEvent e) throws IOException {
-        String username = usernameInput.getText();
-        usernameInput.clear();
-        message.setText("Welcome " + username);
+        if (passwordInput.getText().isBlank() == false && usernameInput.getText().isBlank() == false) {
+            message.setText("You tried to login");
+        } else {
+            message.setText("Invalid username or password");
+        }
     }
 
 }
