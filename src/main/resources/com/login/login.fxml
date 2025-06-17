@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="400.0" minWidth="540.0" prefHeight="400.0" prefWidth="540.0" styleClass="main" xmlns="http://javafx.com/javafx/21.0.7" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.login.LoginController">
+   <left>
+      <AnchorPane prefHeight="407.0" prefWidth="228.0" styleClass="aside" stylesheets="@login.css" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" layoutY="110.0" prefHeight="17.0" prefWidth="228.0" text="Pluto" textFill="WHITE">
+               <font>
+                  <Font name="Verdana Bold" size="24.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Label>
+            <Label alignment="CENTER" layoutY="161.0" prefHeight="17.0" prefWidth="228.0" text="Planet Nine" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Label>
+            <Line endX="82.0" layoutX="123.0" layoutY="148.0" startX="-100.0" stroke="WHITE" strokeWidth="2.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Line>
+            <Circle fill="TRANSPARENT" layoutX="114.0" layoutY="148.0" radius="100.0" stroke="#b2b2b2ae" strokeType="INSIDE" />
+            <Circle fill="#b5b5b5" layoutX="57.0" layoutY="66.0" radius="18.0" stroke="#838383" strokeType="INSIDE">
+               <effect>
+                  <InnerShadow />
+               </effect>
+            </Circle>
+            <Label alignment="CENTER" layoutY="369.0" prefHeight="17.0" prefWidth="228.0" text="Copyright (c). All Rights Reserved" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Label>
+         </children>
+      </AnchorPane>
+   </left>
+   <right>
+      <AnchorPane prefHeight="400.0" prefWidth="332.0" styleClass="section" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" layoutX="1.0" layoutY="44.0" prefHeight="17.0" prefWidth="311.0" styleClass="section__title" text="Secure Login">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+               <effect>
+                  <InnerShadow />
+               </effect>
+            </Label>
+            <Label alignment="CENTER" layoutY="128.0" prefHeight="17.0" prefWidth="134.0" styleClass="section__username-text" text="Username">
+               <font>
+                  <Font name="Arial" size="16.0" />
+               </font>
+               <effect>
+                  <InnerShadow />
+               </effect>
+            </Label>
+            <Label alignment="CENTER" layoutY="164.0" prefHeight="17.0" prefWidth="134.0" styleClass="section__password-text" text="Password">
+               <font>
+                  <Font name="Arial" size="16.0" />
+               </font>
+               <effect>
+                  <InnerShadow />
+               </effect>
+            </Label>
+            <TextField fx:id="usernameInput" layoutX="119.0" layoutY="124.0" promptText="Username" styleClass="section__username-input">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </TextField>
+            <PasswordField fx:id="passwordInput" layoutX="119.0" layoutY="162.0" promptText="Password" styleClass="section__password-input">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </PasswordField>
+            <Button fx:id="button1" layoutX="30.0" layoutY="259.0" mnemonicParsing="false" onAction="#button1OnAction" prefHeight="25.0" prefWidth="252.0" styleClass="section__login-button" stylesheets="@login.css" text="Login" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <Button fx:id="button2" layoutX="31.0" layoutY="311.0" mnemonicParsing="false" onAction="#button2OnAction" prefHeight="25.0" prefWidth="252.0" styleClass="section__cancel-button" stylesheets="@login.css" text="Cancel" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <Label fx:id="message" alignment="CENTER" layoutX="30.0" layoutY="76.0" prefHeight="47.0" prefWidth="250.0">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </right>
+</BorderPane>
