@@ -1,9 +1,16 @@
-#button1,
-#button2 {
-  -fx-padding: 6px 0px;
-  -fx-background-color: rgb(32, 9, 116);
+.login {
+  -fx-padding: 0;
 }
 
-.aside {
-  -fx-background-color: rgb(3, 51, 174);
+.login .split-pane-divider {
+  -fx-padding: 0;
+}
+
+.decoration {
+  -fx-background-color: rgb(214, 69, 69);
+  -fx-padding: 20px;
+}
+
+.information {
+  -fx-padding: 20px;
 }

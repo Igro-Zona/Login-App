@@ -7,10 +7,14 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class LoginController {
+    @FXML
+    private SplitPane splitPane;
+
     // @FXML
     // private Label message;
 
@@ -43,5 +47,13 @@ public class LoginController {
     // message.setText("Invalid username or password");
     // }
     // }
+
+    @FXML
+    public void initialize() {
+        SplitPane.Divider divider = splitPane.getDividers().get(0);
+        divider.positionProperty().addListener((obs, oldVal, newVal) -> {
+            divider.setPosition(0.5);
+        });
+    }
 
 }
