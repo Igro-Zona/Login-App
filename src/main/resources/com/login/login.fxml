@@ -1,112 +1,152 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="400.0" minWidth="540.0" prefHeight="400.0" prefWidth="540.0" styleClass="main" xmlns="http://javafx.com/javafx/21.0.7" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.login.LoginController">
-   <left>
-      <AnchorPane prefHeight="407.0" prefWidth="228.0" styleClass="aside" stylesheets="@login.css" BorderPane.alignment="CENTER">
+<SplitPane fx:id="splitPane" dividerPositions="0.5" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="1120.0" styleClass="login" stylesheets="@login.css" xmlns="http://javafx.com/javafx/21.0.7" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.login.LoginController">
+   <items>
+      <VBox alignment="TOP_CENTER" styleClass="decoration">
          <children>
-            <Label alignment="CENTER" layoutY="110.0" prefHeight="17.0" prefWidth="228.0" text="Pluto" textFill="WHITE">
+            <AnchorPane VBox.vgrow="ALWAYS">
+               <children>
+                  <VBox alignment="TOP_CENTER" prefHeight="509.0" prefWidth="447.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Circle fill="#ffffff00" radius="180.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" translateY="30.0">
+                           <effect>
+                              <InnerShadow />
+                           </effect>
+                        </Circle>
+                        <Circle centerX="100.0" centerY="90.0" fill="#d1d1d1" radius="60.0" stroke="BLACK" strokeType="INSIDE" translateX="-120.0" translateY="-330.0">
+                           <effect>
+                              <InnerShadow />
+                           </effect>
+                        </Circle>
+                     </children>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" prefHeight="427.0" prefWidth="588.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Label alignment="CENTER" focusTraversable="false" text="Pluto" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                           <VBox.margin>
+                              <Insets bottom="10.0" top="150.0" />
+                           </VBox.margin>
+                           <styleClass>
+                              <String fx:value="decoration__text" />
+                              <String fx:value="decoration__text--bold" />
+                           </styleClass>
+                        </Label>
+                        <Line endX="100.0" startX="-100.0" stroke="WHITE" strokeWidth="2.0">
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </Line>
+                        <Label focusTraversable="false" styleClass="decoration__text" text="Planet Nine" textFill="WHITE">
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+            <Label focusTraversable="false" styleClass="decoration__copyright" text="Copyright (c). All Rights Reserved" textFill="WHITE">
                <font>
-                  <Font name="Verdana Bold" size="24.0" />
+                  <Font size="14.0" />
                </font>
                <effect>
                   <DropShadow />
                </effect>
             </Label>
-            <Label alignment="CENTER" layoutY="161.0" prefHeight="17.0" prefWidth="228.0" text="Planet Nine" textFill="WHITE">
-               <font>
-                  <Font name="Arial" size="22.0" />
-               </font>
-               <effect>
-                  <DropShadow />
-               </effect>
-            </Label>
-            <Line endX="82.0" layoutX="123.0" layoutY="148.0" startX="-100.0" stroke="WHITE" strokeWidth="2.0">
-               <effect>
-                  <DropShadow />
-               </effect>
-            </Line>
-            <Circle fill="TRANSPARENT" layoutX="114.0" layoutY="148.0" radius="100.0" stroke="#b2b2b2ae" strokeType="INSIDE" />
-            <Circle fill="#b5b5b5" layoutX="57.0" layoutY="66.0" radius="18.0" stroke="#838383" strokeType="INSIDE">
-               <effect>
-                  <InnerShadow />
-               </effect>
-            </Circle>
-            <Label alignment="CENTER" layoutY="369.0" prefHeight="17.0" prefWidth="228.0" text="Copyright (c). All Rights Reserved" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="10.0" />
-               </font>
-               <effect>
-                  <DropShadow />
-               </effect>
-            </Label>
-         </children>
-      </AnchorPane>
-   </left>
-   <right>
-      <AnchorPane prefHeight="400.0" prefWidth="332.0" styleClass="section" BorderPane.alignment="CENTER">
+         </children></VBox>
+      <VBox alignment="TOP_CENTER" styleClass="information">
          <children>
-            <Label alignment="CENTER" layoutX="1.0" layoutY="44.0" prefHeight="17.0" prefWidth="311.0" styleClass="section__title" text="Secure Login">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-               <effect>
-                  <InnerShadow />
-               </effect>
+            <Label focusTraversable="false" text="Login Menu">
+               <styleClass>
+                  <String fx:value="information__text-lg" />
+                  <String fx:value="information__text--bold" />
+               </styleClass>
+               <VBox.margin>
+                  <Insets bottom="20.0" top="40.0" />
+               </VBox.margin>
             </Label>
-            <Label alignment="CENTER" layoutY="128.0" prefHeight="17.0" prefWidth="134.0" styleClass="section__username-text" text="Username">
-               <font>
-                  <Font name="Arial" size="16.0" />
-               </font>
-               <effect>
-                  <InnerShadow />
-               </effect>
+            <Label fx:id="loginMessage" focusTraversable="false" styleClass="information__text-sm" textFill="RED" wrapText="true">
+               <VBox.margin>
+                  <Insets bottom="30.0" />
+               </VBox.margin>
             </Label>
-            <Label alignment="CENTER" layoutY="164.0" prefHeight="17.0" prefWidth="134.0" styleClass="section__password-text" text="Password">
-               <font>
-                  <Font name="Arial" size="16.0" />
-               </font>
-               <effect>
-                  <InnerShadow />
-               </effect>
-            </Label>
-            <TextField fx:id="usernameInput" layoutX="119.0" layoutY="124.0" promptText="Username" styleClass="section__username-input">
-               <font>
-                  <Font size="13.0" />
-               </font>
-            </TextField>
-            <PasswordField fx:id="passwordInput" layoutX="119.0" layoutY="162.0" promptText="Password" styleClass="section__password-input">
-               <font>
-                  <Font size="13.0" />
-               </font>
-            </PasswordField>
-            <Button fx:id="button1" layoutX="30.0" layoutY="259.0" mnemonicParsing="false" onAction="#button1OnAction" prefHeight="25.0" prefWidth="252.0" styleClass="section__login-button" stylesheets="@login.css" text="Login" textFill="WHITE">
-               <font>
-                  <Font size="13.0" />
-               </font>
+            <HBox alignment="CENTER" spacing="25.0">
+               <children>
+                  <Label focusTraversable="false" styleClass="information__text-sm" text="Username" />
+                  <TextField fx:id="usernameField" prefHeight="35.0" prefWidth="200.0" promptText="Username">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                  </TextField>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="50.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER" spacing="30.0">
+               <children>
+                  <Label focusTraversable="false" styleClass="information__text-sm" text="Password" />
+                  <PasswordField fx:id="passwordField" prefHeight="35.0" prefWidth="200.0" promptText="Password">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                  </PasswordField>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="50.0" />
+               </VBox.margin>
+            </HBox>
+            <Button fx:id="loginButton" defaultButton="true" mnemonicParsing="false" onAction="#loginButtonOnAction" prefHeight="43.0" styleClass="information__button" text="Login" textFill="WHITE">
+               <VBox.margin>
+                  <Insets bottom="40.0" />
+               </VBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
-            <Button fx:id="button2" layoutX="31.0" layoutY="311.0" mnemonicParsing="false" onAction="#button2OnAction" prefHeight="25.0" prefWidth="252.0" styleClass="section__cancel-button" stylesheets="@login.css" text="Cancel" textFill="WHITE">
-               <font>
-                  <Font size="13.0" />
-               </font>
+            <Button fx:id="closeButton" cancelButton="true" mnemonicParsing="false" onAction="#closeButtonOnAction" styleClass="information__button" text="Close" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
-            <Label fx:id="message" alignment="CENTER" layoutX="30.0" layoutY="76.0" prefHeight="47.0" prefWidth="250.0">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
          </children>
-      </AnchorPane>
-   </right>
-</BorderPane>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding></VBox>
+   </items>
+</SplitPane>

@@ -1,9 +1,61 @@
-#button1,
-#button2 {
-  -fx-padding: 6px 0px;
-  -fx-background-color: rgb(32, 9, 116);
+.login {
+  -fx-padding: 0;
 }
 
-.aside {
-  -fx-background-color: rgb(3, 51, 174);
+.login .split-pane-divider {
+  -fx-padding: 0;
+  -fx-cursor: initial;
+}
+
+.decoration {
+  -fx-background-color: rgb(244, 85, 85);
+  -fx-padding: 20px;
+}
+
+.decoration__text {
+  -fx-font-size: 2.75em;
+}
+
+.decoration__text--bold {
+  -fx-font-weight: bold;
+}
+
+.decoration__copyright {
+  -fx-font-size: 1.25em;
+}
+
+.information {
+  -fx-padding: 20px;
+}
+
+.information__text-lg {
+  -fx-font-size: 2.75em;
+}
+
+.information__text-sm {
+  -fx-font-size: 2em;
+}
+
+.information__text--bold {
+  -fx-font-weight: bold;
+}
+
+.information__button {
+  -fx-background-color: rgb(245, 68, 68);
+  -fx-pref-width: 11em;
+  -fx-pref-height: 0.5em;
+  -fx-font-size: 2.5em;
+  -fx-background-radius: 0.5em;
+}
+
+.information__button:hover {
+  -fx-background-color: rgb(202, 45, 45);
+}
+
+.information__button:pressed {
+  -fx-background-color: rgb(218, 72, 72);
+}
+
+.information__button:focused {
+  -fx-background-color: rgb(218, 72, 72);
 }

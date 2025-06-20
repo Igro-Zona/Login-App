@@ -7,41 +7,51 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 public class LoginController {
-    // @FXML
-    // private Label message;
+    @FXML
+    private SplitPane splitPane;
 
-    // @FXML
-    // private PasswordField passwordInput;
+    @FXML
+    private Label loginMessage;
 
-    // @FXML
-    // private TextField usernameInput;
+    @FXML
+    private TextField usernameField;
 
-    // @FXML
-    // private Button button1;
+    @FXML
+    private PasswordField passwordField;
 
-    // @FXML
-    // private Button button2;
+    @FXML
+    private Button loginButton;
 
-    // public void initialize() {
-    // message.setText("Enter your informaion:");
-    // }
+    @FXML
+    private Button closeButton;
 
-    // public void button2OnAction(ActionEvent e) throws IOException {
-    // Stage stage = (Stage) button2.getScene().getWindow();
-    // stage.close();
-    // }
+    @FXML
+    public void initialize() {
+        SplitPane.Divider divider = splitPane.getDividers().get(0);
+        divider.positionProperty().addListener((obs, oldVal, newVal) -> {
+            divider.setPosition(0.5);
+        });
+    }
 
-    // public void button1OnAction(ActionEvent e) throws IOException {
-    // if (passwordInput.getText().isBlank() == false &&
-    // usernameInput.getText().isBlank() == false) {
-    // message.setText("You tried to login");
-    // } else {
-    // message.setText("Invalid username or password");
-    // }
-    // }
+    @FXML
+    public void loginButtonOnAction(ActionEvent e) throws IOException {
+        if (usernameField.getText().isBlank() == false &&
+                passwordField.getText().isBlank() == false) {
+            if (usernameField.getText().equals("Timur") && passwordField.getText().equals("12345")) {
+                loginMessage.setText("Succesfull login");
+            } else {
+                loginMessage.setText("Invalid username or password");
+            }
+        }
+    }
+
+    @FXML
+    public void closeButtonOnAction(ActionEvent e) throws IOException {
+        System.exit(0);
+    }
 
 }
