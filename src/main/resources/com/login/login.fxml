@@ -39,7 +39,7 @@
                   </VBox>
                   <VBox alignment="TOP_CENTER" prefHeight="427.0" prefWidth="588.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Label alignment="CENTER" text="Pluto" textFill="WHITE">
+                        <Label alignment="CENTER" focusTraversable="false" text="Pluto" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -59,7 +59,7 @@
                               <DropShadow />
                            </effect>
                         </Line>
-                        <Label styleClass="decoration__text" text="Planet Nine" textFill="WHITE">
+                        <Label focusTraversable="false" styleClass="decoration__text" text="Planet Nine" textFill="WHITE">
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>
@@ -74,7 +74,7 @@
                   </VBox>
                </children>
             </AnchorPane>
-            <Label styleClass="decoration__copyright" text="Copyright (c). All Rights Reserved" textFill="WHITE">
+            <Label focusTraversable="false" styleClass="decoration__copyright" text="Copyright (c). All Rights Reserved" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
@@ -85,7 +85,7 @@
          </children></VBox>
       <VBox alignment="TOP_CENTER" styleClass="information">
          <children>
-            <Label text="Login Menu">
+            <Label focusTraversable="false" text="Login Menu">
                <styleClass>
                   <String fx:value="information__text-lg" />
                   <String fx:value="information__text--bold" />
@@ -94,18 +94,14 @@
                   <Insets bottom="20.0" top="40.0" />
                </VBox.margin>
             </Label>
-            <Label text="Label" textFill="RED">
-               <styleClass>
-                  <String fx:value="information__text-sm" />
-                  <String fx:value="information__text--bold" />
-               </styleClass>
+            <Label focusTraversable="false" styleClass="information__text-sm" textFill="RED">
                <VBox.margin>
                   <Insets bottom="30.0" />
                </VBox.margin>
             </Label>
             <HBox alignment="CENTER" spacing="25.0">
                <children>
-                  <Label styleClass="information__text-sm" text="Username" />
+                  <Label focusTraversable="false" styleClass="information__text-sm" text="Username" />
                   <TextField prefHeight="35.0" prefWidth="200.0" promptText="Username">
                      <font>
                         <Font size="16.0" />
@@ -121,7 +117,7 @@
             </HBox>
             <HBox alignment="CENTER" spacing="30.0">
                <children>
-                  <Label styleClass="information__text-sm" text="Password" />
+                  <Label focusTraversable="false" styleClass="information__text-sm" text="Password" />
                   <PasswordField prefHeight="35.0" prefWidth="200.0" promptText="Password">
                      <font>
                         <Font size="16.0" />

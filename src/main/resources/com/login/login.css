@@ -55,3 +55,7 @@
 .information__button:pressed {
   -fx-background-color: rgb(218, 72, 72);
 }
+
+.information__button:focused {
+  -fx-background-color: rgb(218, 72, 72);
+}
