@@ -4,8 +4,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
@@ -15,15 +15,27 @@
    <items>
       <VBox alignment="TOP_CENTER" prefHeight="620.0" prefWidth="755.0" styleClass="decoration">
          <children>
-            <AnchorPane prefHeight="427.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
+            <AnchorPane prefHeight="366.0" prefWidth="435.0" VBox.vgrow="ALWAYS">
                <children>
-                  <Circle fill="DODGERBLUE" radius="180.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.topAnchor="20.0" />
-                  <Circle fill="DODGERBLUE" radius="100.0" stroke="BLACK" strokeType="INSIDE" />
-                  <VBox alignment="TOP_CENTER" prefHeight="427.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <VBox alignment="TOP_CENTER" prefHeight="509.0" prefWidth="447.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Circle fill="#ffffff00" radius="180.0" stroke="WHITE" strokeType="INSIDE" translateY="30.0">
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </Circle>
+                        <Circle centerX="100.0" centerY="90.0" fill="#d1d1d1" radius="60.0" stroke="BLACK" strokeType="INSIDE" translateX="-120.0" translateY="-330.0">
+                           <effect>
+                              <InnerShadow />
+                           </effect>
+                        </Circle>
+                     </children>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" prefHeight="427.0" prefWidth="588.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <Label alignment="CENTER" text="Pluto" textFill="WHITE">
                            <font>
-                              <Font name="System Bold" size="26.0" />
+                              <Font name="System Bold" size="32.0" />
                            </font>
                            <effect>
                               <DropShadow />
@@ -42,7 +54,7 @@
                               <Insets top="10.0" />
                            </VBox.margin>
                            <font>
-                              <Font size="26.0" />
+                              <Font size="32.0" />
                            </font>
                            <effect>
                               <DropShadow />
@@ -52,7 +64,6 @@
                   </VBox>
                </children>
             </AnchorPane>
-            <Region maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS" />
             <Label text="Copyright (c). All Rights Reserved" textFill="WHITE">
                <font>
                   <Font size="14.0" />
@@ -62,6 +73,6 @@
                </effect>
             </Label>
          </children></VBox>
-      <VBox prefHeight="200.0" prefWidth="100.0" styleClass="information" />
+      <VBox prefHeight="200.0" prefWidth="661.0" styleClass="information" />
    </items>
 </SplitPane>
