@@ -15,8 +15,10 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("login"));
+        scene = new Scene(loadFXML("login"), 1120, 630);
         stage.initStyle(StageStyle.DECORATED);
+        stage.setMinWidth(1120);
+        stage.setMinHeight(630);
         stage.setTitle("Login App");
         stage.setScene(scene);
         stage.show();
@@ -32,7 +34,7 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-        launch(App.class);
+        launch(args);
     }
 
 }
