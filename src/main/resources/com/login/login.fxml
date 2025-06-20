@@ -131,7 +131,7 @@
                   <Insets bottom="50.0" />
                </VBox.margin>
             </HBox>
-            <Button fx:id="loginButton" defaultButton="true" mnemonicParsing="false" prefHeight="43.0" styleClass="information__button" text="Login" textFill="WHITE">
+            <Button fx:id="loginButton" defaultButton="true" mnemonicParsing="false" onAction="#loginButtonOnAction" prefHeight="43.0" styleClass="information__button" text="Login" textFill="WHITE">
                <VBox.margin>
                   <Insets bottom="40.0" />
                </VBox.margin>
@@ -139,7 +139,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="closeButton" cancelButton="true" mnemonicParsing="false" styleClass="information__button" text="Close" textFill="WHITE">
+            <Button fx:id="closeButton" cancelButton="true" mnemonicParsing="false" onAction="#closeButtonOnAction" styleClass="information__button" text="Close" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
