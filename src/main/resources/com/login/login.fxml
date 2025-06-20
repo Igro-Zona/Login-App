@@ -94,7 +94,7 @@
                   <Insets bottom="20.0" top="40.0" />
                </VBox.margin>
             </Label>
-            <Label focusTraversable="false" styleClass="information__text-sm" textFill="RED">
+            <Label fx:id="loginMessage" focusTraversable="false" styleClass="information__text-sm" textFill="RED" wrapText="true">
                <VBox.margin>
                   <Insets bottom="30.0" />
                </VBox.margin>
@@ -102,7 +102,7 @@
             <HBox alignment="CENTER" spacing="25.0">
                <children>
                   <Label focusTraversable="false" styleClass="information__text-sm" text="Username" />
-                  <TextField prefHeight="35.0" prefWidth="200.0" promptText="Username">
+                  <TextField fx:id="usernameField" prefHeight="35.0" prefWidth="200.0" promptText="Username">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -118,7 +118,7 @@
             <HBox alignment="CENTER" spacing="30.0">
                <children>
                   <Label focusTraversable="false" styleClass="information__text-sm" text="Password" />
-                  <PasswordField prefHeight="35.0" prefWidth="200.0" promptText="Password">
+                  <PasswordField fx:id="passwordField" prefHeight="35.0" prefWidth="200.0" promptText="Password">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -131,7 +131,7 @@
                   <Insets bottom="50.0" />
                </VBox.margin>
             </HBox>
-            <Button defaultButton="true" mnemonicParsing="false" prefHeight="43.0" styleClass="information__button" text="Login" textFill="WHITE">
+            <Button fx:id="loginButton" defaultButton="true" mnemonicParsing="false" prefHeight="43.0" styleClass="information__button" text="Login" textFill="WHITE">
                <VBox.margin>
                   <Insets bottom="40.0" />
                </VBox.margin>
@@ -139,7 +139,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button cancelButton="true" mnemonicParsing="false" styleClass="information__button" text="Button" textFill="WHITE">
+            <Button fx:id="closeButton" cancelButton="true" mnemonicParsing="false" styleClass="information__button" text="Close" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>

@@ -13,6 +13,21 @@ import javafx.stage.Stage;
 
 public class LoginController {
     @FXML
+    private Label loginMessage;
+
+    @FXML
+    private TextField usernameField;
+
+    @FXML
+    private PasswordField passwordField;
+
+    @FXML
+    private Button loginButton;
+
+    @FXML
+    private Button closeButton;
+
+    @FXML
     private SplitPane splitPane;
 
     // @FXML
