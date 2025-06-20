@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
@@ -19,9 +20,9 @@
                <children>
                   <VBox alignment="TOP_CENTER" prefHeight="509.0" prefWidth="447.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Circle fill="#ffffff00" radius="180.0" stroke="WHITE" strokeType="INSIDE" translateY="30.0">
+                        <Circle fill="#ffffff00" radius="180.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" translateY="30.0">
                            <effect>
-                              <DropShadow />
+                              <InnerShadow />
                            </effect>
                         </Circle>
                         <Circle centerX="100.0" centerY="90.0" fill="#d1d1d1" radius="60.0" stroke="BLACK" strokeType="INSIDE" translateX="-120.0" translateY="-330.0">
@@ -43,13 +44,17 @@
                            <VBox.margin>
                               <Insets bottom="10.0" top="150.0" />
                            </VBox.margin>
+                           <styleClass>
+                              <String fx:value="decoration__text" />
+                              <String fx:value="decoration__text--bold" />
+                           </styleClass>
                         </Label>
                         <Line endX="100.0" startX="-100.0" stroke="WHITE" strokeWidth="2.0">
                            <effect>
                               <DropShadow />
                            </effect>
                         </Line>
-                        <Label text="Planet Nine" textFill="WHITE">
+                        <Label styleClass="decoration__text" text="Planet Nine" textFill="WHITE">
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>
@@ -64,7 +69,7 @@
                   </VBox>
                </children>
             </AnchorPane>
-            <Label text="Copyright (c). All Rights Reserved" textFill="WHITE">
+            <Label styleClass="decoration__copyright" text="Copyright (c). All Rights Reserved" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
