@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -21,6 +22,8 @@ public class App extends Application {
         stage.setMinHeight(630);
         stage.setTitle("Login App");
         stage.setScene(scene);
+        stage.getIcons().add(
+                new Image(getClass().getResourceAsStream("/com/login/login.png")));
         stage.show();
     }
 
