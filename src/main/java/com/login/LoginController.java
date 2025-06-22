@@ -2,6 +2,8 @@ package com.login;
 
 import java.io.IOException;
 
+import javafx.animation.PauseTransition;
+import javafx.util.Duration;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -43,6 +45,17 @@ public class LoginController {
                 passwordField.getText().isBlank() == false) {
             if (usernameField.getText().equals("Timur") && passwordField.getText().equals("12345")) {
                 loginMessage.setText("Succesfull login");
+
+                PauseTransition pause = new PauseTransition(Duration.seconds(1));
+                pause.setOnFinished(event -> {
+                    try {
+                        System.out.println(1);
+                        App.setRootWithUser("main", usernameField.getText());
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                });
+                pause.play();
             } else {
                 loginMessage.setText("Invalid username or password");
             }
