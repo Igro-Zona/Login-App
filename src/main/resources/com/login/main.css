@@ -1,13 +1,41 @@
 .main {
-  -fx-padding: 10px;
+  -fx-padding: 15px;
+}
+
+.main--dark {
+  -fx-background-color: rgb(36, 36, 36);
 }
 
 .main__button {
   -fx-background-color: transparent;
 }
 
-.main__button-mode:focused {
+.main__button:hover,
+.main__button:focused {
   -fx-border-width: 0px;
   -fx-background-color: rgb(224, 224, 224);
   -fx-background-radius: 24px;
+}
+
+.main__button:pressed {
+  -fx-border-width: 0px;
+  -fx-background-color: rgb(183, 183, 183);
+  -fx-background-radius: 24px;
+}
+
+.main__button--dark {
+  -fx-text-fill: white;
+}
+
+.main__button--dark:hover,
+.main__button--dark:focused {
+  -fx-background-color: rgb(54, 54, 54);
+}
+
+.main__button--dark:pressed {
+  -fx-background-color: rgb(85, 85, 85);
+}
+
+.main__text--dark {
+  -fx-text-fill: white;
 }

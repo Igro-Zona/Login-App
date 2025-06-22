@@ -43,7 +43,7 @@ public class LoginController {
     public void loginButtonOnAction(ActionEvent e) throws IOException {
         if (usernameField.getText().isBlank() == false &&
                 passwordField.getText().isBlank() == false) {
-            if (usernameField.getText().equals("Timur") && passwordField.getText().equals("12345")) {
+            if (usernameField.getText().trim().equals("Timur") && passwordField.getText().trim().equals("12345")) {
                 loginMessage.setText("Succesfull login");
 
                 PauseTransition pause = new PauseTransition(Duration.seconds(1));
