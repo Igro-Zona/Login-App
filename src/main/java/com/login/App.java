@@ -31,6 +31,14 @@ public class App extends Application {
         scene.setRoot(loadFXML(fxml));
     }
 
+    public static void setRootWithUser(String fxml, String username) throws IOException {
+        FXMLLoader loader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+        Parent root = loader.load();
+        MainController controller = loader.getController();
+        controller.setUsername(username);
+        scene.setRoot(root);
+    }
+
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
