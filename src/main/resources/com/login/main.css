@@ -1,0 +1,12 @@
+.main {
+  -fx-padding: 10px;
+}
+
+.main__button-mode {
+  -fx-background-color: red;
+}
+
+.main__button-mode:focused {
+  -fx-border-width: 0px;
+  -fx-background-color: rgb(0, 0, 0);
+}
