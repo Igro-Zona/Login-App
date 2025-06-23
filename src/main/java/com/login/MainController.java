@@ -36,6 +36,7 @@ public class MainController {
 
     @FXML
     private void initialize() {
+        mode = loadModeFromFile();
         applyMode();
     }
 
@@ -55,7 +56,27 @@ public class MainController {
         } else {
             mode = "light";
         }
+        saveModeToFile(mode);
         applyMode();
+    }
+
+    private void saveModeToFile(String mode) {
+        try (java.io.FileWriter writer = new java.io.FileWriter("mode.txt")) {
+            writer.write(mode);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private String loadModeFromFile() {
+        try (java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.FileReader("mode.txt"))) {
+            String line = reader.readLine();
+            if (line != null && (line.equals("light") || line.equals("dark"))) {
+                return line;
+            }
+        } catch (IOException e) {
+        }
+        return "light";
     }
 
     public void applyMode() {
