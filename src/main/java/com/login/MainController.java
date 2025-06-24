@@ -34,20 +34,22 @@ public class MainController {
 
     private String mode = "light";
 
-    @FXML
-    private void initialize() {
-        mode = loadModeFromFile();
-        applyMode();
-    }
+    private Theme themeManager = new Theme();
 
     @FXML
-    public void exitOnAction(ActionEvent e) throws IOException {
-        App.setRoot("login");
+    private void initialize() {
+        mode = themeManager.loadModeFromFile();
+        applyTheme();
     }
 
     public void setUsername(String username) {
         this.username = username;
         mainMessage.setText("Welcome " + this.username + "!");
+    }
+
+    @FXML
+    public void exitOnAction(ActionEvent e) throws IOException {
+        App.setRoot("login");
     }
 
     public void changeModeOnAction(ActionEvent e) throws IOException {
@@ -56,30 +58,11 @@ public class MainController {
         } else {
             mode = "light";
         }
-        saveModeToFile(mode);
-        applyMode();
+        themeManager.saveThemeToFile(mode);
+        applyTheme();
     }
 
-    private void saveModeToFile(String mode) {
-        try (java.io.FileWriter writer = new java.io.FileWriter("mode.txt")) {
-            writer.write(mode);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private String loadModeFromFile() {
-        try (java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.FileReader("mode.txt"))) {
-            String line = reader.readLine();
-            if (line != null && (line.equals("light") || line.equals("dark"))) {
-                return line;
-            }
-        } catch (IOException e) {
-        }
-        return "light";
-    }
-
-    public void applyMode() {
+    public void applyTheme() {
         if (mode.equals("dark")) {
             mainPane.getStyleClass().add("main--dark");
             modeButton.getStyleClass().add("main__button--dark");
