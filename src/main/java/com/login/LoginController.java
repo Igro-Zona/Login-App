@@ -49,7 +49,6 @@ public class LoginController {
                 PauseTransition pause = new PauseTransition(Duration.seconds(1));
                 pause.setOnFinished(event -> {
                     try {
-                        System.out.println(1);
                         App.setRootWithUser("main", usernameField.getText());
                     } catch (IOException ex) {
                         ex.printStackTrace();
