@@ -34,19 +34,22 @@ public class MainController {
 
     private String mode = "light";
 
-    @FXML
-    private void initialize() {
-        applyMode();
-    }
+    private Theme themeManager = new Theme();
 
     @FXML
-    public void exitOnAction(ActionEvent e) throws IOException {
-        App.setRoot("login");
+    private void initialize() {
+        mode = themeManager.loadModeFromFile();
+        applyTheme();
     }
 
     public void setUsername(String username) {
         this.username = username;
         mainMessage.setText("Welcome " + this.username + "!");
+    }
+
+    @FXML
+    public void exitOnAction(ActionEvent e) throws IOException {
+        App.setRoot("login");
     }
 
     public void changeModeOnAction(ActionEvent e) throws IOException {
@@ -55,10 +58,11 @@ public class MainController {
         } else {
             mode = "light";
         }
-        applyMode();
+        themeManager.saveThemeToFile(mode);
+        applyTheme();
     }
 
-    public void applyMode() {
+    public void applyTheme() {
         if (mode.equals("dark")) {
             mainPane.getStyleClass().add("main--dark");
             modeButton.getStyleClass().add("main__button--dark");
