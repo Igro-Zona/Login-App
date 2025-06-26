@@ -17,3 +17,8 @@ Thumbs.db
 # IDE files
 *.iml
 .idea/
+
+# Database related files
+*.sql
+*.db-shm
+*.db-wal

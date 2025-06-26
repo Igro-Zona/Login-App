@@ -1,6 +1,7 @@
 package com.login;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javafx.animation.PauseTransition;
 import javafx.util.Duration;
@@ -31,38 +32,54 @@ public class LoginController {
     @FXML
     private Button closeButton;
 
+    private DatabaseController dbController;
+
     @FXML
-    public void initialize() {
+    public void initialize() throws SQLException {
         SplitPane.Divider divider = splitPane.getDividers().get(0);
         divider.positionProperty().addListener((obs, oldVal, newVal) -> {
             divider.setPosition(0.5);
         });
+        dbController = new DatabaseController();
     }
 
     @FXML
     public void loginButtonOnAction(ActionEvent e) throws IOException {
+        String username = usernameField.getText().trim();
+        String password = passwordField.getText().trim();
         if (usernameField.getText().isBlank() == false &&
                 passwordField.getText().isBlank() == false) {
-            if (usernameField.getText().trim().equals("Timur") && passwordField.getText().trim().equals("12345")) {
-                loginMessage.setText("Succesfull login");
-
-                PauseTransition pause = new PauseTransition(Duration.seconds(1));
-                pause.setOnFinished(event -> {
-                    try {
-                        App.setRootWithUser("main", usernameField.getText());
-                    } catch (IOException ex) {
-                        ex.printStackTrace();
-                    }
-                });
-                pause.play();
+            if (dbController.userExists(username)) {
+                if (password.equals(dbController.getUserPassword(username))) {
+                    succesfullLogin(username);
+                } else {
+                    loginMessage.setText("Invalid password");
+                }
             } else {
-                loginMessage.setText("Invalid username or password");
+                dbController.addUser(username, password);
+                succesfullLogin(username);
             }
+
         }
+    }
+
+    private void succesfullLogin(String username) {
+        loginMessage.setText("Succesfull login");
+        dbController.close();
+        PauseTransition pause = new PauseTransition(Duration.seconds(1));
+        pause.setOnFinished(event -> {
+            try {
+                App.setRootWithUser("main", username);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });
+        pause.play();
     }
 
     @FXML
     public void closeButtonOnAction(ActionEvent e) throws IOException {
+        dbController.close();
         System.exit(0);
     }
 

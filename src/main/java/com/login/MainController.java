@@ -1,6 +1,7 @@
 package com.login;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -34,21 +35,28 @@ public class MainController {
 
     private String mode = "light";
 
-    private Theme themeManager = new Theme();
+    private DatabaseController dbController;
 
     @FXML
-    private void initialize() {
-        mode = themeManager.loadModeFromFile();
-        applyTheme();
+    public void initialize() {
     }
 
     public void setUsername(String username) {
         this.username = username;
         mainMessage.setText("Welcome " + this.username + "!");
+        try {
+            dbController = new DatabaseController();
+            mode = dbController.getUserTheme(username);
+            applyTheme();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     public void exitOnAction(ActionEvent e) throws IOException {
+        dbController.setUserTheme(username, mode);
+        dbController.close();
         App.setRoot("login");
     }
 
@@ -58,7 +66,7 @@ public class MainController {
         } else {
             mode = "light";
         }
-        themeManager.saveThemeToFile(mode);
+        dbController.setUserTheme(username, mode);
         applyTheme();
     }
 
