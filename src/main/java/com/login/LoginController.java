@@ -1,7 +1,6 @@
 package com.login;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 import javafx.animation.PauseTransition;
 import javafx.util.Duration;
@@ -32,31 +31,27 @@ public class LoginController {
     @FXML
     private Button closeButton;
 
-    private DatabaseController dbController;
-
     @FXML
-    public void initialize() throws SQLException {
+    public void initialize() {
         SplitPane.Divider divider = splitPane.getDividers().get(0);
         divider.positionProperty().addListener((obs, oldVal, newVal) -> {
             divider.setPosition(0.5);
         });
-        dbController = new DatabaseController();
     }
 
     @FXML
     public void loginButtonOnAction(ActionEvent e) throws IOException {
         String username = usernameField.getText().trim();
         String password = passwordField.getText().trim();
-        if (usernameField.getText().isBlank() == false &&
-                passwordField.getText().isBlank() == false) {
-            if (dbController.userExists(username)) {
-                if (password.equals(dbController.getUserPassword(username))) {
+        if (!username.isBlank() && !password.isBlank()) {
+            if (App.dbController.userExists(username)) {
+                if (password.equals(App.dbController.getUserPassword(username))) {
                     succesfullLogin(username);
                 } else {
                     loginMessage.setText("Invalid password");
                 }
             } else {
-                dbController.addUser(username, password);
+                App.dbController.addUser(username, password);
                 succesfullLogin(username);
             }
 
@@ -65,13 +60,11 @@ public class LoginController {
 
     private void succesfullLogin(String username) {
         loginMessage.setText("Succesfull login");
-        dbController.close();
         PauseTransition pause = new PauseTransition(Duration.seconds(1));
         pause.setOnFinished(event -> {
             try {
                 App.setRootWithUser("main", username);
             } catch (IOException ex) {
-                ex.printStackTrace();
             }
         });
         pause.play();
@@ -79,7 +72,7 @@ public class LoginController {
 
     @FXML
     public void closeButtonOnAction(ActionEvent e) throws IOException {
-        dbController.close();
+        App.dbController.close();
         System.exit(0);
     }
 

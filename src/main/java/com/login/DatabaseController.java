@@ -27,8 +27,8 @@ public class DatabaseController {
         String sql = "SELECT 1 FROM users WHERE username = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, username);
-            ResultSet rs = statement.executeQuery();
-            return rs.next();
+            ResultSet set = statement.executeQuery();
+            return set.next();
         } catch (SQLException e) {
             return false;
         }
@@ -38,9 +38,9 @@ public class DatabaseController {
         String sql = "SELECT password FROM users WHERE username = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, username);
-            ResultSet rs = statement.executeQuery();
-            if (rs.next()) {
-                return rs.getString("password");
+            ResultSet set = statement.executeQuery();
+            if (set.next()) {
+                return set.getString("password");
             }
         } catch (SQLException e) {
         }
@@ -51,9 +51,9 @@ public class DatabaseController {
         String sql = "SELECT theme FROM users WHERE username = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, username);
-            ResultSet rs = statement.executeQuery();
-            if (rs.next()) {
-                return rs.getString("theme");
+            ResultSet set = statement.executeQuery();
+            if (set.next()) {
+                return set.getString("theme");
             }
         } catch (SQLException e) {
         }

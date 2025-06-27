@@ -14,27 +14,30 @@ import java.sql.SQLException;
 public class App extends Application {
 
     private static Scene scene;
-    private DatabaseController dbController;
+    public static DatabaseController dbController;
 
     @Override
-    public void start(Stage stage) throws IOException, SQLException {
-        dbController = new DatabaseController();
-        scene = new Scene(loadFXML("login"), 1120, 630);
-        stage.initStyle(StageStyle.DECORATED);
-        stage.setMinWidth(1120);
-        stage.setMinHeight(630);
-        stage.setTitle("Login App");
-        stage.setScene(scene);
-        stage.getIcons().add(
-                new Image(getClass().getResourceAsStream("/com/login/login.png")));
-        stage.setOnCloseRequest((event) -> {
-            dbController.close();
-        });
-        stage.show();
+    public void start(Stage stage) {
+        try {
+            dbController = new DatabaseController();
+            scene = new Scene(loadFXML("login"), 1120, 630);
+            stage.initStyle(StageStyle.DECORATED);
+            stage.setMinWidth(1120);
+            stage.setMinHeight(630);
+            stage.setTitle("Login App");
+            stage.setScene(scene);
+            stage.getIcons().add(
+                    new Image(getClass().getResourceAsStream("/com/login/login.png")));
+            stage.setOnCloseRequest((event) -> {
+                dbController.close();
+            });
+            stage.show();
+        } catch (IOException | SQLException e) {
+        }
 
     }
 
-    static void setRoot(String fxml) throws IOException {
+    public static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
 

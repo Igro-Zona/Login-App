@@ -1,7 +1,6 @@
 package com.login;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -32,46 +31,33 @@ public class MainController {
     private Label mainMessage;
 
     private String username;
-
-    private String mode = "light";
-
-    private DatabaseController dbController;
-
-    @FXML
-    public void initialize() {
-    }
+    private String theme = "light";
 
     public void setUsername(String username) {
         this.username = username;
         mainMessage.setText("Welcome " + this.username + "!");
-        try {
-            dbController = new DatabaseController();
-            mode = dbController.getUserTheme(username);
-            applyTheme();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        theme = App.dbController.getUserTheme(username);
+        applyTheme();
     }
 
     @FXML
     public void exitOnAction(ActionEvent e) throws IOException {
-        dbController.setUserTheme(username, mode);
-        dbController.close();
+        App.dbController.setUserTheme(username, theme);
         App.setRoot("login");
     }
 
     public void changeModeOnAction(ActionEvent e) throws IOException {
-        if (mode.equals("light")) {
-            mode = "dark";
+        if (theme.equals("light")) {
+            theme = "dark";
         } else {
-            mode = "light";
+            theme = "light";
         }
-        dbController.setUserTheme(username, mode);
+        App.dbController.setUserTheme(username, theme);
         applyTheme();
     }
 
     public void applyTheme() {
-        if (mode.equals("dark")) {
+        if (theme.equals("dark")) {
             mainPane.getStyleClass().add("main--dark");
             modeButton.getStyleClass().add("main__button--dark");
             modeIcon.setContent(
