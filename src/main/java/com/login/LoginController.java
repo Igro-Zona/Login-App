@@ -33,6 +33,7 @@ public class LoginController {
 
     @FXML
     public void initialize() {
+        App.dbController.createTable();
         SplitPane.Divider divider = splitPane.getDividers().get(0);
         divider.positionProperty().addListener((obs, oldVal, newVal) -> {
             divider.setPosition(0.5);

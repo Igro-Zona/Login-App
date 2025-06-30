@@ -10,6 +10,16 @@ public class DatabaseController {
         this.connection = DriverManager.getConnection("jdbc:sqlite:./settings.db");
     }
 
+    public boolean createTable() {
+        String sql = "CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT UNIQUE NOT NULL,  password TEXT NOT NULL,  theme TEXT CHECK(theme IN ('light', 'dark')))";
+        try (Statement statement = connection.createStatement()) {
+            statement.execute(sql);
+            return true;
+        } catch (SQLException e) {
+            return false;
+        }
+    }
+
     public boolean addUser(String username, String password) {
         String sql = "INSERT INTO users (username, password, theme) VALUES (?,?,?)";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
