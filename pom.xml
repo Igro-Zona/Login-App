@@ -3,12 +3,16 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.login</groupId>
   <artifactId>login</artifactId>
-  <version>4.0.0</version>
+  <version>4.0.1</version>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>21</maven.compiler.source>
     <maven.compiler.target>21</maven.compiler.target>
     <javafx.version>21.0.7</javafx.version>
+    <javafx.sdk.dir>C:/javafx-sdk-21.0.7</javafx.sdk.dir>
+    <jdk.jmods.dir>C:/Program Files/Java/jdk-21/jmods</jdk.jmods.dir>
+    <app.image.dir>${project.build.directory}/installer/Login-App</app.image.dir>
+    <modules.dir>${project.build.directory}/modules</modules.dir>
   </properties>
 
   <dependencies>
@@ -69,17 +73,17 @@
         <executions>
           <execution>
             <id>copy-db</id>
-            <phase>package</phase>
+            <phase>verify</phase>
             <goals>
               <goal>copy-resources</goal>
             </goals>
             <configuration>
-              <outputDirectory>${project.build.directory}</outputDirectory>
+              <outputDirectory>${app.image.dir}</outputDirectory>
               <resources>
                 <resource>
                   <directory>${basedir}</directory>
                   <includes>
-                    <include>setting.db</include>
+                    <include>settings.db</include>
                   </includes>
                 </resource>
               </resources>
@@ -96,7 +100,7 @@
             <phase>prepare-package</phase>
             <configuration>
               <target>
-                <delete dir="${project.build.directory}/installer/Login-App"/>
+                <delete dir="${app.image.dir}"/>
               </target>
             </configuration>
             <goals>
@@ -108,8 +112,7 @@
             <phase>package</phase>
             <configuration>
               <target>
-                <copy file="${project.build.directory}/login-${project.version}.jar"
-                                  tofile="${project.build.directory}/modules/login-${project.version}.jar"/>
+                <copy file="${project.build.directory}/login-${project.version}.jar" tofile="${modules.dir}/login-${project.version}.jar"/>
               </target>
             </configuration>
             <goals>
@@ -121,8 +124,8 @@
             <phase>verify</phase>
             <configuration>
               <target>
-                <copy todir="${project.build.directory}/installer/Login-App/runtime/bin" overwrite="true">
-                  <fileset dir="C:/javafx-sdk-21.0.7/bin" includes="*.dll"/>
+                <copy todir="${app.image.dir}/runtime/bin" overwrite="true">
+                  <fileset dir="${javafx.sdk.dir}/bin" includes="*.dll"/>
                 </copy>
               </target>
             </configuration>
@@ -147,7 +150,7 @@
               <executable>jpackage</executable>
               <arguments>
                 <argument>--input</argument>
-                <argument>${project.build.directory}/modules</argument>
+                <argument>${modules.dir}</argument>
                 <argument>--dest</argument>
                 <argument>${project.build.directory}/installer</argument>
                 <argument>--name</argument>
@@ -159,7 +162,7 @@
                 <argument>--icon</argument>
                 <argument>src/main/resources/com/login/login.ico</argument>
                 <argument>--module-path</argument>
-                <argument>C:/javafx-sdk-21.0.7/lib;C:/Program Files/Java/jdk-21/jmods;${project.build.directory}/modules</argument>
+                <argument>${javafx.sdk.dir}/lib;${jdk.jmods.dir};${modules.dir}</argument>
                 <argument>--add-modules</argument>
                 <argument>com.login,javafx.controls,javafx.fxml</argument>
                 <argument>--type</argument>
