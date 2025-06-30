@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.login</groupId>
   <artifactId>login</artifactId>
-  <version>3.0.0</version>
+  <version>4.0.0</version>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>21</maven.compiler.source>
@@ -108,8 +108,8 @@
             <phase>package</phase>
             <configuration>
               <target>
-                <copy file="${project.build.directory}/login-3.0.0.jar"
-                                                                                                                                                                                                                tofile="${project.build.directory}/modules/login-3.0.0.jar"/>
+                <copy file="${project.build.directory}/login-${project.version}.jar"
+                                  tofile="${project.build.directory}/modules/login-${project.version}.jar"/>
               </target>
             </configuration>
             <goals>
@@ -153,7 +153,7 @@
                 <argument>--name</argument>
                 <argument>Login-App</argument>
                 <argument>--main-jar</argument>
-                <argument>login-3.0.0.jar</argument>
+                <argument>login-${project.version}.jar</argument>
                 <argument>--main-class</argument>
                 <argument>com.login.Main</argument>
                 <argument>--icon</argument>
