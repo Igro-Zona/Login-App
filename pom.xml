@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.login</groupId>
   <artifactId>login</artifactId>
-  <version>4.0.1</version>
+  <version>4.0.2</version>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>21</maven.compiler.source>
@@ -11,8 +11,9 @@
     <javafx.version>21.0.7</javafx.version>
     <javafx.sdk.dir>C:/javafx-sdk-21.0.7</javafx.sdk.dir>
     <jdk.jmods.dir>C:/Program Files/Java/jdk-21/jmods</jdk.jmods.dir>
-    <app.image.dir>${project.build.directory}/installer/Login-App</app.image.dir>
+    <app.image.dir>${project.build.directory}/installer</app.image.dir>
     <modules.dir>${project.build.directory}/modules</modules.dir>
+    <app.name>Login-App</app.name>
   </properties>
 
   <dependencies>
@@ -60,7 +61,7 @@
                   <groupId>org.xerial</groupId>
                   <artifactId>sqlite-jdbc</artifactId>
                   <version>3.50.1.0</version>
-                  <outputDirectory>${project.build.directory}/modules</outputDirectory>
+                  <outputDirectory>${modules.dir}</outputDirectory>
                 </artifactItem>
               </artifactItems>
             </configuration>
@@ -78,7 +79,7 @@
               <goal>copy-resources</goal>
             </goals>
             <configuration>
-              <outputDirectory>${app.image.dir}</outputDirectory>
+              <outputDirectory>${app.image.dir}/${app.name}</outputDirectory>
               <resources>
                 <resource>
                   <directory>${basedir}</directory>
@@ -96,18 +97,6 @@
         <version>3.1.0</version>
         <executions>
           <execution>
-            <id>clean-jpackage-output</id>
-            <phase>prepare-package</phase>
-            <configuration>
-              <target>
-                <delete dir="${app.image.dir}"/>
-              </target>
-            </configuration>
-            <goals>
-              <goal>run</goal>
-            </goals>
-          </execution>
-          <execution>
             <id>copy-main-jar</id>
             <phase>package</phase>
             <configuration>
@@ -124,7 +113,7 @@
             <phase>verify</phase>
             <configuration>
               <target>
-                <copy todir="${app.image.dir}/runtime/bin" overwrite="true">
+                <copy todir="${app.image.dir}/${app.name}/runtime/bin" overwrite="true">
                   <fileset dir="${javafx.sdk.dir}/bin" includes="*.dll"/>
                 </copy>
               </target>
@@ -149,22 +138,18 @@
             <configuration>
               <executable>jpackage</executable>
               <arguments>
-                <argument>--input</argument>
-                <argument>${modules.dir}</argument>
-                <argument>--dest</argument>
-                <argument>${project.build.directory}/installer</argument>
-                <argument>--name</argument>
-                <argument>Login-App</argument>
-                <argument>--main-jar</argument>
-                <argument>login-${project.version}.jar</argument>
-                <argument>--main-class</argument>
-                <argument>com.login.Main</argument>
-                <argument>--icon</argument>
-                <argument>src/main/resources/com/login/login.ico</argument>
                 <argument>--module-path</argument>
                 <argument>${javafx.sdk.dir}/lib;${jdk.jmods.dir};${modules.dir}</argument>
+                <argument>--module</argument>
+                <argument>com.login/com.login.Main</argument>
+                <argument>--dest</argument>
+                <argument>${app.image.dir}</argument>
+                <argument>--name</argument>
+                <argument>${app.name}</argument>
+                <argument>--icon</argument>
+                <argument>src/main/resources/com/login/login.ico</argument>
                 <argument>--add-modules</argument>
-                <argument>com.login,javafx.controls,javafx.fxml</argument>
+                <argument>org.xerial.sqlitejdbc</argument>
                 <argument>--type</argument>
                 <argument>app-image</argument>
                 <argument>--verbose</argument>
