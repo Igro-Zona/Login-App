@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="1120.0" styleClass="main" stylesheets="@main.css" xmlns="http://javafx.com/javafx/21.0.7" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.login.MainController">
+<BorderPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="1120.0" styleClass="main" stylesheets="@main.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.login.MainController">
    <top>
       <HBox BorderPane.alignment="CENTER">
          <children>
@@ -48,6 +48,11 @@
                <font>
                   <Font name="System Bold" size="36.0" />
                </font></Label>
+            <Label fx:id="scoreMessage" wrapText="true">
+               <font>
+                  <Font size="28.0" />
+               </font>
+            </Label>
          </children>
       </VBox>
    </center>
