@@ -44,6 +44,11 @@ public class MainController {
     }
 
     @FXML
+    private void initialize() {
+        scoreMessage.setText("Total logins to this account:");
+    }
+
+    @FXML
     public void exitOnAction(ActionEvent e) throws IOException {
         App.dbController.setUserTheme(username, theme);
         App.setRoot("login");
@@ -86,5 +91,4 @@ public class MainController {
             exitIcon.setFill(Color.BLACK);
         }
     }
-
 }
