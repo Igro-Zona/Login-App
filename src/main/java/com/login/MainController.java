@@ -30,6 +30,9 @@ public class MainController {
     @FXML
     private Label mainMessage;
 
+    @FXML
+    private Label scoreMessage;
+
     private String username;
     private String theme = "light";
 
@@ -66,6 +69,7 @@ public class MainController {
             modeIcon.setScaleX(3);
             modeIcon.setScaleY(3);
             mainMessage.getStyleClass().add("main__text--dark");
+            scoreMessage.getStyleClass().add("main__text--dark");
             exitButton.getStyleClass().add("main__button--dark");
             exitIcon.setFill(Color.WHITE);
         } else {
@@ -77,6 +81,7 @@ public class MainController {
             modeIcon.setScaleX(0.3);
             modeIcon.setScaleY(0.3);
             mainMessage.getStyleClass().remove("main__text--dark");
+            scoreMessage.getStyleClass().remove("main__text--dark");
             exitButton.getStyleClass().remove("main__button--dark");
             exitIcon.setFill(Color.BLACK);
         }
