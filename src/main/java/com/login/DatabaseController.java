@@ -11,7 +11,7 @@ public class DatabaseController {
     }
 
     public boolean createTable() {
-        String sql = "CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT UNIQUE NOT NULL,  password TEXT NOT NULL,  theme TEXT CHECK(theme IN ('light', 'dark')))";
+        String sql = "CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT UNIQUE NOT NULL,  password TEXT NOT NULL,  theme TEXT CHECK(theme IN ('light', 'dark'))), total INTEGER NOT NULL";
         try (Statement statement = connection.createStatement()) {
             statement.execute(sql);
             return true;
@@ -89,7 +89,7 @@ public class DatabaseController {
             statement1.setString(1, username);
             ResultSet set = statement1.executeQuery();
             if (set.next()) {
-                int total = Integer.valueOf(set.getString("total"));
+                int total = set.getInt("total");
                 total++;
                 String sql2 = "UPDATE users SET total = ? WHERE username = ?";
                 try (PreparedStatement statement2 = connection.prepareStatement(sql2)) {

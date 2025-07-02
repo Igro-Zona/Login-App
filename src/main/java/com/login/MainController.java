@@ -41,11 +41,7 @@ public class MainController {
         mainMessage.setText("Welcome " + this.username + "!");
         theme = App.dbController.getUserTheme(username);
         applyTheme();
-    }
-
-    @FXML
-    private void initialize() {
-        scoreMessage.setText("Total logins to this account:");
+        scoreMessage.setText("Total logins to this account: " + App.dbController.updateTotal(username));
     }
 
     @FXML
