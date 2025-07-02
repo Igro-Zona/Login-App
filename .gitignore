@@ -22,3 +22,6 @@ Thumbs.db
 *.sql
 *.db-shm
 *.db-wal
+
+# Text files
+*.txt
