@@ -21,11 +21,12 @@ public class DatabaseController {
     }
 
     public boolean addUser(String username, String password) {
-        String sql = "INSERT INTO users (username, password, theme) VALUES (?,?,?)";
+        String sql = "INSERT INTO users (username, password, theme, total) VALUES (?,?,?,?)";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, username);
             statement.setString(2, password);
             statement.setString(3, "light");
+            statement.setString(4, "0");
             statement.executeUpdate();
             return true;
         } catch (SQLException e) {
@@ -80,6 +81,30 @@ public class DatabaseController {
         } catch (SQLException e) {
             return false;
         }
+    }
+
+    public int updateTotal(String username) {
+        String sql1 = "SELECT total FROM users WHERE username = ?";
+        try (PreparedStatement statement1 = connection.prepareStatement(sql1)) {
+            statement1.setString(1, username);
+            ResultSet set = statement1.executeQuery();
+            if (set.next()) {
+                int total = Integer.valueOf(set.getString("total"));
+                total++;
+                String sql2 = "UPDATE users SET total = ? WHERE username = ?";
+                try (PreparedStatement statement2 = connection.prepareStatement(sql2)) {
+                    statement2.setInt(1, total);
+                    statement2.setString(2, username);
+                    int updated = statement2.executeUpdate();
+                    if (updated > 0) {
+                        return total;
+                    }
+                }
+
+            }
+        } catch (SQLException e) {
+        }
+        return -999;
     }
 
     public void close() {
