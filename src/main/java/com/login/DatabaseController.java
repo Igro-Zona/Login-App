@@ -41,6 +41,7 @@ public class DatabaseController {
             ResultSet set = statement.executeQuery();
             return set.next();
         } catch (SQLException e) {
+            App.alertFactory.createDBAlert();
             return false;
         }
     }

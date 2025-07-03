@@ -52,8 +52,9 @@ public class LoginController {
                     loginMessage.setText("Invalid password");
                 }
             } else {
-                App.dbController.addUser(username, password);
-                succesfullLogin(username);
+                if (App.dbController.addUser(username, password)) {
+                    succesfullLogin(username);
+                }
             }
 
         }
@@ -66,6 +67,7 @@ public class LoginController {
             try {
                 App.setRootWithUser("main", username);
             } catch (IOException ex) {
+                App.alertFactory.createFatalError();
             }
         });
         pause.play();
