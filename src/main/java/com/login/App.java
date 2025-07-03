@@ -15,9 +15,11 @@ public class App extends Application {
 
     private static Scene scene;
     public static DatabaseController dbController;
+    public static AlertFactory alertFactory;
 
     @Override
     public void start(Stage stage) {
+        alertFactory = new AlertFactory();
         try {
             dbController = new DatabaseController();
             scene = new Scene(loadFXML("login"), 1120, 630);

@@ -16,6 +16,7 @@ public class DatabaseController {
             statement.execute(sql);
             return true;
         } catch (SQLException e) {
+            App.alertFactory.createDBAlert();
             return false;
         }
     }
@@ -30,6 +31,7 @@ public class DatabaseController {
             statement.executeUpdate();
             return true;
         } catch (SQLException e) {
+            App.alertFactory.createDBAlert();
             return false;
         }
     }
@@ -41,6 +43,7 @@ public class DatabaseController {
             ResultSet set = statement.executeQuery();
             return set.next();
         } catch (SQLException e) {
+            App.alertFactory.createDBAlert();
             return false;
         }
     }
@@ -54,6 +57,7 @@ public class DatabaseController {
                 return set.getString("password");
             }
         } catch (SQLException e) {
+            App.alertFactory.createDBAlert();
         }
         return null;
     }
@@ -67,6 +71,7 @@ public class DatabaseController {
                 return set.getString("theme");
             }
         } catch (SQLException e) {
+            App.alertFactory.createDBAlert();
         }
         return null;
     }
@@ -79,6 +84,7 @@ public class DatabaseController {
             int updated = statement.executeUpdate();
             return updated > 0;
         } catch (SQLException e) {
+            App.alertFactory.createDBAlert();
             return false;
         }
     }
@@ -103,6 +109,7 @@ public class DatabaseController {
 
             }
         } catch (SQLException e) {
+            App.alertFactory.createDBAlert();
         }
         return -999;
     }
@@ -112,6 +119,7 @@ public class DatabaseController {
             try {
                 connection.close();
             } catch (SQLException e) {
+                App.alertFactory.createDBAlert();
             }
         }
     }
