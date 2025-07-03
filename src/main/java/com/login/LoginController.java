@@ -67,6 +67,7 @@ public class LoginController {
             try {
                 App.setRootWithUser("main", username);
             } catch (IOException ex) {
+                App.alertFactory.createFatalError();
             }
         });
         pause.play();

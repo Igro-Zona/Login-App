@@ -8,7 +8,15 @@ public class AlertFactory {
         Alert alert = new Alert(AlertType.ERROR);
         alert.setTitle("Database Error");
         alert.setHeaderText("An error occurred");
-        alert.setContentText("Please ensure that settings.db file is presented near Login-App.exe file");
+        alert.setContentText("Please ensure that settings.db file is present next to the Login-App.exe file.");
+        alert.showAndWait();
+    }
+
+    public void createFatalError() {
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Fatal Error");
+        alert.setHeaderText("An error occurred");
+        alert.setContentText("Something went wrong. Please ensure the integrity of the application files.");
         alert.showAndWait();
     }
 }

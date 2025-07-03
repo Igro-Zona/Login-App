@@ -35,6 +35,7 @@ public class App extends Application {
             });
             stage.show();
         } catch (IOException | SQLException e) {
+            App.alertFactory.createFatalError();
         }
 
     }
