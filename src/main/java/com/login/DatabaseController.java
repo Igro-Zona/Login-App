@@ -16,7 +16,6 @@ public class DatabaseController {
             statement.execute(sql);
             return true;
         } catch (SQLException e) {
-            App.alertFactory.createDBAlert();
             return false;
         }
     }
